@@ -48,10 +48,6 @@ tryceratops = "*"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.isort]
-profile = "black"
-src_paths = ["src", "tests"]
-
 [tool.black]
 target-version = ["py37", "py38", "py39"]
 include = '\.pyi?$'
