@@ -35,28 +35,13 @@ Changelog = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutt
 [tool.poetry.dependencies]
 python = ">=3.7.1, <4.0"
 
-[tool.poetry.dev-dependencies]
-autoflake = "*"
+[tool.poetry.group.dev.dependencies]
 black = "*"
-flake8 = "*"
-flake8-bugbear = "*"
-flake8-builtins = "*"
-flake8-comprehensions = "*"
-flake8-debugger = "*"
-flake8-eradicate = "*"
-flake8-logging-format = "*"
-isort = "*"
-mkdocstrings = {version = ">=0.18", extras = ["python"]}
-mkdocs-material = "*"
+ruff = "*"
 mypy = "*"
-pep8-naming = "*"
-pre-commit = "*"
-pymdown-extensions = "*"
 pytest = "*"
-pytest-github-actions-annotate-failures = "*"
 pytest-cov = "*"
-python-kacl = "*"
-pyupgrade = "*"
+pytest-github-actions-annotate-failures = "*"
 tryceratops = "*"
 
 [build-system]
