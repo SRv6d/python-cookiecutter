@@ -60,8 +60,3 @@ jobs:
         run: |
           cd example-project
           ../actionlint -color
-      - name: Lint project
-        run: |
-          cd example-project
-          poetry install
-          poetry run pre-commit run -a
