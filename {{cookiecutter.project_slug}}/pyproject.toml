@@ -60,8 +60,9 @@ include = '\.pyi?$'
 show_missing = true
 fail_under = 50
 exclude_lines = [
-    'if TYPE_CHECKING:',
-    'pragma: no cover'
+    "@overload",
+    "if TYPE_CHECKING:",
+    "pragma: no cover"
 ]
 
 [tool.mypy]
