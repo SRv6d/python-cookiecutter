@@ -56,14 +56,6 @@ build-backend = "poetry.core.masonry.api"
 target-version = {{ cookiecutter._python_version_specs[cookiecutter.python_version]['black_taget_versions'] }}
 include = '\.pyi?$'
 
-[tool.pytest.ini_options]
-addopts = """\
-    --cov {{ cookiecutter.package_name }} \
-    --cov tests \
-    --cov-report term-missing \
-    --no-cov-on-fail \
-"""
-
 [tool.coverage.report]
 show_missing = true
 fail_under = 50
