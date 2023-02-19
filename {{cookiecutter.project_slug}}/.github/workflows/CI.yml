@@ -1,0 +1,49 @@
+---
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: >-
+{%- raw %}
+    ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number
+    || github.sha }}
+{%- endraw %}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python_version: {{ cookiecutter._python_version_specs[cookiecutter.python_version]['versions'] }}
+        nox_session:
+          - ruff
+          - black
+          - mypy
+          - tryceratops
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+{%- raw %}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python_version }}
+      - run: pip3 install poetry nox nox-poetry
+      - run: nox -s ${{ matrix.nox_session }}
+  spellcheck:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - run: pip3 install tomli codespell
+      - uses: codespell-project/codespell-problem-matcher@v1
+      - name: check for typos
+        run: codespell
+{%- endraw %}
