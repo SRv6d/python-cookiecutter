@@ -38,15 +38,19 @@ python = ">={{ cookiecutter._python_version_specs[cookiecutter.python_version]['
 [tool.poetry.group.dev.dependencies]
 nox = "*"
 nox-poetry = "*"
+
+[tool.poetry.group.typeshed.dependencies]
+
+[tool.poetry.group.lint.dependencies]
 black = "*"
 ruff = "*"
 mypy = "*"
+tryceratops = "*"
+
+[tool.poetry.group.test.dependencies]
 pytest = "*"
 pytest-cov = "*"
 pytest-github-actions-annotate-failures = "*"
-tryceratops = "*"
-
-[tool.poetry.group.typeshed.dependencies]
 
 [tool.poetry.group.jupyter]
 optional = true
