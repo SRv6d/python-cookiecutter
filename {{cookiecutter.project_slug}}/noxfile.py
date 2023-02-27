@@ -53,21 +53,21 @@ def tryceratops(session) -> None:
 @session(python=PYTHON)
 def pytest_unit(session) -> None:
     """Run unit tests using pytest."""
-    session.install("pytest", "pytest-cov", ".")
+    session.run("poetry", "install", "--only=main,test", external=True)
     session.run("pytest", "--cov", "tests/unit")
 
 
 @session(python=PYTHON)
 def pytest_integration(session) -> None:
     """Run integration tests using pytest."""
-    session.install("pytest", "pytest-cov", ".")
+    session.run("poetry", "install", "--only=main,test", external=True)
     session.run("pytest", "--cov", "tests/integration")
 
 
 @session(python=PYTHON)
 def pytest_e2e(session) -> None:
     """Run e2e tests using pytest."""
-    session.install("pytest", "pytest-cov", ".")
+    session.run("poetry", "install", "--only=main,test", external=True)
     session.run("pytest", "--cov", "tests/e2e")
 
 
